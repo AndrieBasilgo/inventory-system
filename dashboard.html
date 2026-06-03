@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Dashboard - IT Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body>
+        <header class="topbar">
+            <div class="brand">IT Inventory</div>
+            <div class="top-actions">
+                <button id="darkToggle" class="btn">Toggle Dark</button>
+                <span id="roleBadge" class="badge muted">User</span>
+                <button id="loginBtn" class="btn">Login</button>
+                <button id="logoutBtn" class="btn hidden">Logout</button>
+            </div>
+        </header>
+
+        <main class="container">
+            <section class="card">
+                <div class="row between">
+                    <h2>Equipment</h2>
+                    <div>
+                        <button id="addBtn" class="btn primary">Add Equipment</button>
+                        <button id="exportCsvBtn" class="btn ghost">Export CSV</button>
+                        <button id="importCsvBtn" class="btn">Import CSV</button>
+                        <input id="csvFile" type="file" accept=".csv" class="hidden">
+                    </div>
+                </div>
+
+                <div class="table-wrap">
+                    <table id="equipTable">
+                        <thead>
+                            <tr><th>Name</th><th>Model</th><th>Serial</th><th>Type</th><th>User</th><th>Status</th><th>Actions</th></tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <div id="equipModal" class="modal fade" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content card">
+                    <div class="modal-header border-bottom-0">
+                        <h5 id="modalTitle" class="modal-title">Add Equipment</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="equipForm">
+                            <div class="mb-3">
+                                <label class="form-label">Name<input id="name" class="form-control" required></label>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Model<input id="model" class="form-control"></label>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Serial Number<input id="serial" class="form-control"></label>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Type
+                                    <select id="type" class="form-select">
+                                        <option>Desktop</option>
+                                        <option>Laptop</option>
+                                        <option>Accessories</option>
+                                        <option>Other</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">User<input id="user" class="form-control"></label>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Status
+                                    <select id="status" class="form-select">
+                                        <option>Available</option>
+                                        <option>Assigned</option>
+                                        <option>Maintenance</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-primary" type="submit">Save</button>
+                                <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="container" style="margin-top:20px">
+        <div class="card small muted">Total items: <span id="total">0</span></div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row between" style="text-align:center">
+                <div class="muted">IT Management • Built with care</div>
+                <div class="muted">© <span id="year"></span></div>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
