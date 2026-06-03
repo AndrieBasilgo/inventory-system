@@ -30,7 +30,7 @@ No install or build step needed. Just open the files in a browser.
 
 ```bash
 # Clone the repo
-git clone https://github.com/YOUR_USERNAME/it-equipment-management.git
+git clone https://github.com/andriebasilgo.github.io/it-equipment-management.git
 
 # Open the login page
 open index.html
